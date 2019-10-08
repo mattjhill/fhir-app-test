@@ -38,7 +38,7 @@
           method: 'POST'
       }
       console.log(params)
-      fetch(API_BASE, params).then(
+      fetch(TOKEN_URL, params).then(
           data=>{return data.json()}
       ).then(res=>{console.log(res)})
     </script>
