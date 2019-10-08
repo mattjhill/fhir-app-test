@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--
+      Temporarily disable cerner-smart-embeddable-lib
+      <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
+    -->
+    <title>Example-SMART-App</title>
+  </head>
+  <body>
+    <!-- Required JS files to enable this page to embed within an MPage -->
+    <!--
+      Temporarily disable cerner-smart-embeddable-lib
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
+      <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
+    -->
+    <script>
+      const CLIENT_ID = '6c12dff4-24e7-4475-a742-b08972c4ea27'
+      const API_BASE = 'https://open-ic.epic.com/Argonaut/api/FHIR/Argonaut'
+      const OAUTH_URL = 'https://open-ic.epic.com/Argonaut/oauth2/authorize'
+      const TOKEN_URL = 'https://open-ic.epic.com/Argonaut/oauth2/token'
+      var urlParams = new URLSearchParams(window.location.search);
+      var code = urlParams.get('code')
+      const data = {
+            'client_id': CLIENT_ID,
+            'grant_type': 'authorization_code',
+            'code': code,
+            'redirect_uri': 'file:////Users/mhill/Projects/fhir-app-test/index.html'
+        }
+      console.log(data)
+      const params = {
+          headers: {
+              'content-type': 'application/x-www-form-urlencoded'
+          },
+          body: data,
+          method: 'POST'
+      }
+      console.log(params)
+    //   fetch(API_BASE, params).then(
+    //       data=>{return data.json()}
+    //   ).then(res=>{console.log(res)})
+    </script>
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </body>
+</html>
